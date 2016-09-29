@@ -75,6 +75,7 @@ namespace Code128
 			{
 				return barcode;
 			}
+
 			return string.Empty;
 		}
 
@@ -89,7 +90,6 @@ namespace Code128
 
 			if (value.Length > 0)
 			{
-
 				charPos = 0;
 				while (charPos < value.Length)
 				{
@@ -138,9 +138,9 @@ namespace Code128
 						minCharPos = GS1_128.IsNumber(value, charPos, minCharPos);
 						if (minCharPos < 0) // OK for 2 digits, process it
 						{
-							//currentChar = int.Parse(value.Substring(charPos, 2));
-							//currentChar = currentChar < 95 ? currentChar + 32 : currentChar + 100;
-							returnValue = returnValue + value.Substring(charPos, 2);
+							var currentChar =  value.Substring(charPos, 2);
+						 
+							returnValue = returnValue + currentChar;
 							charPos += 2;
 						}
 						else
